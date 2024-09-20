@@ -1,2 +1,2 @@
-# pip requirements file for first Sensing Service Module
-# This file can be deleted if no pip packages are required.
+gpiozero==2.0.1     # cross-platform GPIO interface
+rpi.gpio==0.7.1     # pin factory for gpiozero

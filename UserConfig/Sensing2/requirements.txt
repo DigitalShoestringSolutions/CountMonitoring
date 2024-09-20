@@ -1,2 +1,0 @@
-# pip requirements file for second Sensing Service Module
-# This file can be deleted if no pip packages are required.
