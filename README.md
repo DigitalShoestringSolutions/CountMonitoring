@@ -1,12 +1,18 @@
-# Starter Solution Template
-Creating a repository from this template will start it with the file structure shown here.
-This will mean that a standard set of actions can be applied and some typical files, however sadly none of the branches or repository settings will be transferred.
+# Count Monitoring Starter Solution
 
-This README will detail the steps that should be taken after using this template to get a starter solution into our standard format.
+### Download
+- Clone this repo `https://github.com/DigitalShoestringSolutions/CountMonitoring`
+- Open the downloaded folder `cd CountMonitoring`
 
-# Steps
-TODO
+### Configure & Assemble
+- Edit the config file to set machine name and pin numbers `nano UserConfig/Sensing/main.py`
+- Check the recipe contains the Service Modules you desire `nano recipe.txt`
+- Assemble the Service Modules `ServiceModules/Asssembly/get_service_modules.sh`
+- Restart to apply the settings to the downloaded Service Modules
 
+### Build & Run
+- Build the docker containers `docker compose build`
+- Start the docker containers `./start.sh`
 
-# Checklist
-- [ ] Make sure the starter solution has a basic README that explains how to build and run it
+### Usage
+- View the dashboard: navigate to `localhost:3000` in a web browser
