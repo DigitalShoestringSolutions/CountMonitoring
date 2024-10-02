@@ -13,10 +13,10 @@ from utilities.mqtt_out import publish
 
 # Define on what pin numbers the sensors are connected to the Raspberry Pi
 # BCM pin numbering scheme
-MyButtons = [Button(pin_number) for pin_number in [5,6,13,19,26]]
+MyButtons = [Button(pin_number) for pin_number in [5,6,19,26]]
 
 # Also select one to also act as the trigger
-CounterTrigger = Button(17)
+CounterTrigger = Button(13)
 
 # When this button is held for 0.5s, publish a count of how many buttons are currently pressed
 CounterTrigger.hold_time = 0.5
