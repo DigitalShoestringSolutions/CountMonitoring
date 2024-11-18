@@ -1,30 +1,64 @@
-# standard imports
-from time import sleep
-from signal import pause
+"""main.py that prepares the Sensing service module for Count Monitoring.
 
-# installed inports
-from gpiozero import Button
+All configuration is done in the Settings section
+Assumes sensors have external pulls
+"""
 
-# local imports
+## -- Imports ---------------------------------------------------------------------
+
+# Standard imports
+import time
+
+# Installed inports
+#none used directly, but smbus2 is used by sequent_16inputs
+
+# Local imports
 from utilities.mqtt_out import publish
+from hardware.ICs.sequent_16inputs import Sequent16inputsHAT
 
-# Assumes sensors have NPN NO style outputs,
-# ie output connection is normally high impedance but becomes connected to ground when sensor triggered.
+## --------------------------------------------------------------------------------
 
-# Define on what pin numbers the sensors are connected to the Raspberry Pi
-# BCM pin numbering scheme
-MyButtons = [Button(pin_number) for pin_number in [5,6,19,26]]
 
-# Also select one to also act as the trigger
-CounterTrigger = Button(13)
 
-# When this button is held for 0.5s, publish a count of how many buttons are currently pressed
-CounterTrigger.hold_time = 0.5
 
-def on_trigger_hold():
-    publish( {"machine": "MachineNameHere"} | {"buttons_pressed" : sum([button.value for button in MyButtons])} )
+## -- Settings  -------------------------------------------------------------------
 
-CounterTrigger.when_held = on_trigger_hold
+# Data tags
+machine_name = "Machine_Name_Here"
 
-# Keep this script running whenever the solution is up
-pause()
+# Timing
+trigger_hold_time = 0.5 # seconds the trigger has to be held to initiate the count
+
+# Pinout
+input_interface = Sequent16inputsHAT(0)
+trigger_channel = 1
+count_channels = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
+
+# Wiring polarity
+active_state = 0
+
+## --------------------------------------------------------------------------------
+
+
+
+
+## -- Main Loop -------------------------------------------------------------------
+
+while True:
+
+    start_time = time.time()
+
+    while input_interface.read_single_channel(trigger_channel) == active_state:
+
+        if time.time() > (start_time + trigger_hold_time):
+
+            publish( {
+                "machine": machine_name,
+                "buttons_pressed" : input_interface.read_multiple_channels(count_channels).count(active_state),
+                } )
+
+            while input_interface.read_single_channel(trigger_channel) == active_state:
+                pass            # Wait for the trigger to be released
+            break               # Exit the while input_interface... loop and restart the main loop
+
+## --------------------------------------------------------------------------------
