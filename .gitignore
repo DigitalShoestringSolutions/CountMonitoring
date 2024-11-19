@@ -1,0 +1,15 @@
+# Explicit exclusions
+# none
+
+# Explicit inclusions
+!**/.gitkeep
+
+# Shoestring procedurally generated components
+ServiceModules/
+docker-compose.yml
+start.sh
+stop.sh
+
+# Compiled and metadata file types
+__pycache__/
+*.DS_Store
