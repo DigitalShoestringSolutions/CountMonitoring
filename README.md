@@ -1,11 +1,15 @@
 # Count Monitoring Starter Solution
 
+Logs events when a button is pressed (or other digital sensor triggered).  
+Additional information about the event can be added by triggering a variable number of secondary sensors.  
+Uses the [Sequent Microsystems 16 input HAT](https://sequentmicrosystems.com/products/16-universal-inputs-card-for-raspberry-pi) for 24V sensors.
+
 ### Download
 - Clone this repo `https://github.com/DigitalShoestringSolutions/CountMonitoring`
 - Open the downloaded folder `cd CountMonitoring`
 
 ### Configure & Assemble
-- Edit the config file to set machine name and pin numbers `nano UserConfig/Sensing/main.py`
+- Edit the config file to set machine name, pin numbers and event descriptions `nano UserConfig/Sensing/main.py`
 - Check the recipe contains the Service Modules you desire `nano recipe.txt`
 - Assemble the Service Modules `ServiceModules/Asssembly/get_service_modules.sh`
 - Restart to apply the settings to the downloaded Service Modules
@@ -17,3 +21,5 @@
 
 ### Usage
 - View the dashboard: navigate to `localhost:3000` in a web browser
+
+![image](https://github.com/user-attachments/assets/73dce43c-f8e3-4503-980e-b74e95d23392)
