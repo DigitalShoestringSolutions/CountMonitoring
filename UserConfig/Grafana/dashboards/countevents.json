@@ -82,7 +82,7 @@
             "type": "influxdb",
             "uid": "influxdb"
           },
-          "query": "from(bucket: \"shoestring_data_bucket\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"count_monitoring\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"event\")\r\n  |> filter(fn: (r) => r[\"machine\"] == \"${machine}\")",
+          "query": "from(bucket: \"shoestring_data_bucket\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"count_monitoring\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"event\")\r\n  |> filter(fn: (r) => r[\"machine\"] == \"${machine}\")\r\n  |> keep(columns: [\"_time\", \"_field\", \"_value\"])",
           "refId": "A"
         }
       ],
@@ -257,10 +257,9 @@
     "list": [
       {
         "current": {
-          "isNone": true,
-          "selected": false,
-          "text": "None",
-          "value": ""
+          "selected": true,
+          "text": "My_Machine_Name_Here",
+          "value": "My_Machine_Name_Here"
         },
         "datasource": {
           "type": "influxdb",
@@ -291,6 +290,6 @@
   "timezone": "browser",
   "title": "Count Events",
   "uid": "ddz2cmqkykg00a",
-  "version": 2,
+  "version": 3,
   "weekStart": ""
 }
