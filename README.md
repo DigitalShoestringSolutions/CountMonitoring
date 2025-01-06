@@ -22,4 +22,4 @@ Uses the [Sequent Microsystems 16 input HAT](https://sequentmicrosystems.com/pro
 ### Usage
 - View the dashboard: navigate to `localhost:3000` in a web browser
 
-![image](https://github.com/user-attachments/assets/73dce43c-f8e3-4503-980e-b74e95d23392)
+![image](https://github.com/user-attachments/assets/1f913230-983d-4f8b-be5d-6938141ba683)
