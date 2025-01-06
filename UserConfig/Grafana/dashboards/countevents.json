@@ -98,18 +98,7 @@
                 ],
                 "operation": "aggregate"
               },
-              "buttons_pressed": {
-                "aggregations": []
-              },
-              "buttons_pressed MachineNameHere": {
-                "aggregations": [],
-                "operation": "groupby"
-              },
               "event": {
-                "aggregations": [],
-                "operation": "groupby"
-              },
-              "event Machine_Name_Here": {
                 "aggregations": [],
                 "operation": "groupby"
               }
@@ -291,6 +280,6 @@
   "timezone": "browser",
   "title": "Count Events",
   "uid": "ddz2cmqkykg00a",
-  "version": 3,
+  "version": 4,
   "weekStart": ""
 }
