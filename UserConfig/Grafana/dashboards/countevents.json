@@ -82,7 +82,7 @@
             "type": "influxdb",
             "uid": "influxdb"
           },
-          "query": "from(bucket: \"shoestring_data_bucket\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"count_monitoring\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"event\")\r\n  |> filter(fn: (r) => r[\"machine\"] == \"${machine}\")",
+          "query": "from(bucket: \"shoestring_data_bucket\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"count_monitoring\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"event\")\r\n  |> filter(fn: (r) => r[\"machine\"] == \"${machine}\")\r\n  |> keep(columns: [\"_time\", \"_field\", \"_value\"])",
           "refId": "A"
         }
       ],
@@ -98,18 +98,7 @@
                 ],
                 "operation": "aggregate"
               },
-              "buttons_pressed": {
-                "aggregations": []
-              },
-              "buttons_pressed MachineNameHere": {
-                "aggregations": [],
-                "operation": "groupby"
-              },
               "event": {
-                "aggregations": [],
-                "operation": "groupby"
-              },
-              "event Machine_Name_Here": {
                 "aggregations": [],
                 "operation": "groupby"
               }
@@ -203,7 +192,7 @@
             "type": "influxdb",
             "uid": "influxdb"
           },
-          "query": "from(bucket: \"shoestring_data_bucket\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"count_monitoring\")\r\n  |> filter(fn: (r) => r[\"machine\"] == \"${machine}\")",
+          "query": "from(bucket: \"shoestring_data_bucket\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"count_monitoring\")\r\n  |> filter(fn: (r) => r[\"machine\"] == \"${machine}\")\r\n  |> keep(columns: [\"_time\", \"_field\", \"_value\"])",
           "refId": "A"
         }
       ],
@@ -216,20 +205,13 @@
         {
           "id": "organize",
           "options": {
-            "excludeByName": {
-              "buttons_pressed Machine_Name_Here": false
-            },
+            "excludeByName": {},
             "includeByName": {},
-            "indexByName": {
-              "Time": 1,
-              "buttons_pressed MachineNameHere": 0
-            },
+            "indexByName": {},
             "renameByName": {
-              "Time": "",
-              "buttons_pressed Breadboard": "Buttons Pressed",
-              "buttons_pressed MachineNameHere": "Buttons Pressed",
-              "buttons_pressed {machine=\"Machine_Name_Here\", name=\"count_monitoring\"}": "Sensors triggered",
-              "event {machine=\"Machine_Name_Here\", name=\"count_monitoring\"}": "Event description"
+              "Time": "Time",
+              "buttons_pressed": "Sensors Triggered",
+              "event": "Event Description"
             }
           }
         },
@@ -298,6 +280,6 @@
   "timezone": "browser",
   "title": "Count Events",
   "uid": "ddz2cmqkykg00a",
-  "version": 2,
+  "version": 4,
   "weekStart": ""
 }
