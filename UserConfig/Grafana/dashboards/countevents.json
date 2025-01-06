@@ -248,7 +248,7 @@
         {
           "id": "formatTime",
           "options": {
-            "outputFormat": "DD/MM/YYYY HH:mm:ss",
+            "outputFormat": "HH:mm:ss DD/MM/YYYY",
             "timeField": "Time",
             "useTimezone": true
           }
