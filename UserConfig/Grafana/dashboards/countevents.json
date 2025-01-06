@@ -248,7 +248,7 @@
         {
           "id": "formatTime",
           "options": {
-            "outputFormat": "DD/MM/YYYY HH:MM:SS",
+            "outputFormat": "HH:mm:ss DD/MM/YYYY",
             "timeField": "Time",
             "useTimezone": true
           }
@@ -264,9 +264,10 @@
     "list": [
       {
         "current": {
+          "isNone": true,
           "selected": false,
-          "text": "Machine_Name_Here",
-          "value": "Machine_Name_Here"
+          "text": "None",
+          "value": ""
         },
         "datasource": {
           "type": "influxdb",
@@ -297,6 +298,6 @@
   "timezone": "browser",
   "title": "Count Events",
   "uid": "ddz2cmqkykg00a",
-  "version": 5,
+  "version": 2,
   "weekStart": ""
 }
