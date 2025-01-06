@@ -257,9 +257,10 @@
     "list": [
       {
         "current": {
+          "isNone": true,
           "selected": false,
-          "text": "My_Machine_Name_Here",
-          "value": "My_Machine_Name_Here"
+          "text": "None",
+          "value": ""
         },
         "datasource": {
           "type": "influxdb",
